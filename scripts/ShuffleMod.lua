@@ -11,6 +11,8 @@ ShuffleMod.preloadOrig   = 0
 ShuffleMod.preloadSteps  = 0
 ShuffleMod.preloadTimer  = 0
 ShuffleMod.nextFunc      = nil
+ShuffleMod.switchFrames  = 0
+ShuffleMod.restoreItem   = nil
 
 local function notify(text)
     if g_currentMission == nil then return end
@@ -111,6 +113,16 @@ function ShuffleMod:loadMap()
         PlayerInputComponent.registerGlobalPlayerActionEvents =
             Utils.appendedFunction(PlayerInputComponent.registerGlobalPlayerActionEvents, ShuffleMod.onRegisterActions)
     end
+    if SoundPlayer ~= nil and SoundPlayer.startChannel ~= nil then
+        local orig = SoundPlayer.startChannel
+        SoundPlayer.startChannel = function(sp, ...)
+            if ShuffleMod.enabled and ShuffleMod.lastItem ~= nil then
+                ShuffleMod.restoreItem = ShuffleMod.lastItem
+            end
+            ShuffleMod.switchFrames = 10
+            return orig(sp, ...)
+        end
+    end
 end
 
 function ShuffleMod:update(dt)
@@ -138,6 +150,20 @@ function ShuffleMod:update(dt)
     end
 
     if not self.enabled or #self.playlist == 0 then return end
+
+    if self.switchFrames > 0 then
+        self.switchFrames = self.switchFrames - 1
+        if self.switchFrames == 0 and self.restoreItem ~= nil then
+            local fn = self.nextFunc or getNext(sp)
+            jump(sp, self.restoreItem, self.knownTotal, fn)
+            self.lastItem    = self.restoreItem
+            self.restoreItem = nil
+            self.suppress    = 20
+        else
+            self.lastItem = sp.currentItem
+        end
+        return
+    end
 
     local total = getTotal(sp)
     if total > self.knownTotal then self:expand(total) end
@@ -173,8 +199,10 @@ function ShuffleMod:deleteMap()
     self.lastItem    = nil
     self.suppress    = 0
     self.knownTotal  = 0
-    self.preloading  = false
-    self.nextFunc    = nil
+    self.preloading   = false
+    self.nextFunc     = nil
+    self.switchFrames = 0
+    self.restoreItem  = nil
 end
 
 addModEventListener(ShuffleMod)
