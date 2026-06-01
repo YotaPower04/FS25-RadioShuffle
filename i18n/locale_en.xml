@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<l10n>
+    <texts>
+        <text name="action_toggle_shuffle" text="Toggle Radio Shuffle"/>
+        <text name="shuffle_on"            text="Shuffle ON"/>
+        <text name="shuffle_off"           text="Shuffle OFF"/>
+    </texts>
+</l10n>

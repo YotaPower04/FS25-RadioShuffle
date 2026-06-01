@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modDesc descVersion="109">
+  <author>ShuffleMod</author>
+  <version>1.2.0.0</version>
+  <manufacturer>ShuffleMod</manufacturer>
+  <iconFilename>icon_ShuffleMod.dds</iconFilename>
+
+  <title>
+    <en>Radio Shuffle</en>
+  </title>
+
+  <description>
+    <en><![CDATA[Adds shuffle mode to the in-game radio for local music files. Randomizes playback order across discovered tracks.]]></en>
+    <de><![CDATA[Fügt einen Shuffle-Modus zum Radio hinzu. Zufällige Wiedergabe von Musiktiteln.]]></de>
+    <fr><![CDATA[Ajoute un mode de lecture aléatoire à la radio du jeu. Lecture aléatoire der Musiktitel.]]></fr>
+  </description>
+
+  <multiplayer supported="true"/>
+
+  <storeItem>
+    <image>store_ShuffleMod.dds</image>
+    <brandImage>brand_ShuffleMod.dds</brandImage>
+  </storeItem>
+
+  <extraSourceFiles>
+    <sourceFile filename="scripts/ShuffleMod.lua"/>
+  </extraSourceFiles>
+
+  <l10n filenamePrefix="i18n/locale"/>
+
+  <actions>
+    <action name="RADIO_SHUFFLE_TOGGLE" category="ONFOOT VEHICLE" axisType="HALF"/>
+  </actions>
+
+  <inputBinding>
+    <actionBinding action="RADIO_SHUFFLE_TOGGLE">
+      <binding device="KB_MOUSE_DEFAULT" input="KEY_F9" axisComponent="+" index="1" isInverted="false" isTurbo="false"/>
+    </actionBinding>
+  </inputBinding>
+</modDesc>
