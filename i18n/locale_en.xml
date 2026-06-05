@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <l10n>
     <texts>
-        <text name="action_toggle_shuffle" text="Toggle Radio Shuffle"/>
+        <text name="action_toggle_shuffle"  text="Toggle Radio Shuffle"/>
+        <text name="action_volume_up"      text="Radio Volume Up"/>
+        <text name="action_volume_down"    text="Radio Volume Down"/>
         <text name="shuffle_on"            text="Shuffle ON"/>
         <text name="shuffle_off"           text="Shuffle OFF"/>
+        <text name="songs_found"           text="songs"/>
+
+        <!-- Controls menu labels -->
+        <text name="input_RADIO_SHUFFLE_TOGGLE" text="Toggle Radio Shuffle"/>
+        <text name="input_RC_RADIO_VOLUME_UP"   text="Radio Volume Up"/>
+        <text name="input_RC_RADIO_VOLUME_DOWN" text="Radio Volume Down"/>
+
+        <!-- Settings page (Settings → General) -->
+        <text name="shufflemod_section_title"      text="Radio Shuffle"/>
+        <text name="shufflemod_fadeDistance_short" text="Radio Fade Distance"/>
+        <text name="shufflemod_fadeDistance_long"  text="How far from a vehicle you can still hear its radio on foot before it fades out completely."/>
+        <text name="shufflemod_outsidePercent_short" text="Radio Outside Volume"/>
+        <text name="shufflemod_outsidePercent_long"  text="How loud the radio is when you are just outside the vehicle, relative to the in-cab volume."/>
     </texts>
 </l10n>

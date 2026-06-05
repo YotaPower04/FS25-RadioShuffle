@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modDesc descVersion="109">
   <author>ShuffleMod</author>
-  <version>1.3.0.0</version>
+  <version>2.2.0.0</version>
   <manufacturer>ShuffleMod</manufacturer>
   <iconFilename>icon_ShuffleMod.dds</iconFilename>
 
@@ -10,9 +10,18 @@
   </title>
 
   <description>
-    <en><![CDATA[Adds shuffle mode to the in-game radio for local music files. Randomizes playback order across discovered tracks.]]></en>
-    <de><![CDATA[Fügt einen Shuffle-Modus zum Radio hinzu. Zufällige Wiedergabe von Musiktiteln.]]></de>
-    <fr><![CDATA[Ajoute un mode de lecture aléatoire à la radio du jeu. Lecture aléatoire der Musiktitel.]]></fr>
+    <en><![CDATA[Enhances the in-game radio for local music files. Features shuffle mode, radio volume hotkeys, per-vehicle radio memory, and outside-vehicle audio fading.
+
+FEATURES:
+- Toggle shuffle with F9 (rebindable)
+- Radio volume up/down hotkeys (rebindable, default LShift+6 / LShift+4)
+- Each vehicle remembers its own radio state and volume
+- Radio fades as you walk away from a vehicle
+- Shuffle builds from your full music library instantly
+
+All keybindings are configurable in the Controls menu.]]></en>
+    <de><![CDATA[Verbessert das In-Game-Radio für lokale Musikdateien. Shuffle-Modus, Lautstärke-Hotkeys, fahrzeugspezifische Radioeinstellungen und Entfernungs-Fade.]]></de>
+    <fr><![CDATA[Améliore la radio en jeu pour les fichiers musicaux locaux. Mode shuffle, raccourcis de volume, mémoire radio par véhicule et fondu audio à distance.]]></fr>
   </description>
 
   <multiplayer supported="true"/>
@@ -24,17 +33,27 @@
 
   <extraSourceFiles>
     <sourceFile filename="scripts/ShuffleMod.lua"/>
+    <sourceFile filename="scripts/lib/UIHelper.lua"/>
+    <sourceFile filename="scripts/ShuffleModUI.lua"/>
   </extraSourceFiles>
 
   <l10n filenamePrefix="i18n/locale"/>
 
   <actions>
-    <action name="RADIO_SHUFFLE_TOGGLE" category="ONFOOT VEHICLE" axisType="HALF"/>
+    <action name="RADIO_SHUFFLE_TOGGLE"  category="ONFOOT VEHICLE" axisType="HALF"/>
+    <action name="RC_RADIO_VOLUME_UP"    category="VEHICLE"        axisType="HALF"/>
+    <action name="RC_RADIO_VOLUME_DOWN"  category="VEHICLE"        axisType="HALF"/>
   </actions>
 
   <inputBinding>
     <actionBinding action="RADIO_SHUFFLE_TOGGLE">
       <binding device="KB_MOUSE_DEFAULT" input="KEY_F9" axisComponent="+" index="1" isInverted="false" isTurbo="false"/>
+    </actionBinding>
+    <actionBinding action="RC_RADIO_VOLUME_UP">
+      <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_6" axisComponent="+" index="1" isInverted="false" isTurbo="false"/>
+    </actionBinding>
+    <actionBinding action="RC_RADIO_VOLUME_DOWN">
+      <binding device="KB_MOUSE_DEFAULT" input="KEY_lshift KEY_4" axisComponent="+" index="1" isInverted="false" isTurbo="false"/>
     </actionBinding>
   </inputBinding>
 </modDesc>
